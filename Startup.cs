@@ -6,7 +6,7 @@ using Nancy;
 using Nancy.ViewEngines.Razor;
 using System.Collections.Generic;
 
-namespace StartupNS
+namespace ToDoList
 {
   public class Startup
   {

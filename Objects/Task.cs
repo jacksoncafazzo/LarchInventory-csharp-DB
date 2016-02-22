@@ -15,6 +15,25 @@ namespace ToDoList
       _description = Description;
     }
 
+
+
+    public override bool Equals(System.Object otherTask)
+    {
+      if (!(otherTask is Task))
+      {
+        return false;
+      }
+      else
+      {
+        Task newTask = (Task) otherTask;
+        bool idEquality = (this.GetId() == newTask.GetId());
+        bool descriptionEquality = (this.GetDescription() == newTask.GetDescription());
+        return (idEquality && descriptionEquality);
+ 
+      }
+    }
+
+
     public void Save()
     {
       SqlConnection conn = DB.Connection();
@@ -43,21 +62,6 @@ namespace ToDoList
       }
     }
 
-    public override bool Equals(System.Object otherTask)
-    {
-      if (!(otherTask is Task))
-      {
-        return false;
-      }
-      else
-      {
-        Task newTask = (Task) otherTask;
-        bool idEquality = (this.GetId() == newTask.GetId());
-        bool descriptionEquality = (this.GetDescription() == newTask.GetDescription());
-        return (idEquality && descriptionEquality);
-      }
-    }
-    
     public static void DeleteAll()
     {
       SqlConnection conn = DB.Connection();
