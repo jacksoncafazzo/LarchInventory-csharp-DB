@@ -6,7 +6,7 @@ using Nancy;
 using Nancy.ViewEngines.Razor;
 using System.Collections.Generic;
 
-namespace ToDoList
+namespace Inventory
 {
   public class Startup
   {
@@ -41,6 +41,6 @@ namespace ToDoList
   }
     public static class DBConfiguration
     {
-        public static string ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=todo;Integrated Security=SSPI;";
+        public static string ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=larchInventory;Integrated Security=SSPI;";
     }
 }
