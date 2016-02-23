@@ -13,12 +13,12 @@ namespace Inventory
     private string _amount;
     private int _price;
 
-    public Item(int category, string name, string Description, string amount, int price, int Id = 0)
+    public Item(int category, string name, string description, string amount, int price, int Id = 0)
     {
       _id = Id;
       _category = category;
       _name = name;
-      _description = Description;
+      _description = description;
       _amount = amount;
       _price = price;
 

@@ -1,0 +1,53 @@
+HOWDY
+
+THIS WILL BE SO FUN
+
+JUST YOU WAIT
+
+YOU'LL JUST LOVE IT
+<div class="container">
+  <div class="row">
+  <h1>Larch Provisions Inventory</h1>
+  </div>
+  <div class="row">
+    <div class="col">
+      <form action="/add_item" method="post">
+        <label for="category">Choose an item category, 1 for solids, 2 for liquid, 3 for dry goods, 4 for seasonings</label>
+        <input type="number" name="category" value="" size="5">
+        <br>
+        <label for="name">What will we call this item?</label>
+        <input type="text" name="name" value="" placeholder="Farmer's Cheese, or Strawberries, etc." size="30">
+        <br>
+        <label for="description">Optionally describe the item</label>
+        <textarea rows="4" cols="50" name="description">Here you can enter info about specific brands, favorite stores, notes about where foraged from, etc</textarea>
+        <br>
+        <label for="amount">Write the amount you are considering to calculate the price</label>
+        <input type="text" name="amount" value="" placeholder="one pound, one gallon, one gram etc." size="30">
+        <br>
+        <label for="price">Enter the price for this item</label>
+        <input type="number" name="price" value="">
+        <br>
+        <button type="submit" name="add-item">Add Item</button>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <ol>
+      @if (Model != null)
+      {
+        @foreach (var item in @Model)
+        {
+          <h3>@item.GetName()</h3>
+          <ul>
+            <li>Category: @item.GetCategory()</li>
+            <li>Description: @item.GetDescription()</li>
+            <li>Amount per @item.GetName(): @item.GetAmount()</li>
+            <li>Price per @item.GetName(): $@item.GetPrice()</li>
+          </ul>
+        }
+      }
+    </ol>
+    </div>
+  </div>
+</div>

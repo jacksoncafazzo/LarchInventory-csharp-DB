@@ -1,0 +1,11 @@
+here it is dawg:
+@foreach (var item in @Model)
+{
+  <li>Name: @item.GetName()</li>
+  <li>Category: @item.GetCategory()</li>
+  <li>Description: @item.GetDescription()</li>
+  <li>Amount per item: @item.GetAmount()</li>
+  <li>Price per item: $@item.GetPrice()</li>
+}
+
+<a href="/clear_all">Clear All Items</a>
