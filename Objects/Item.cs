@@ -7,13 +7,13 @@ namespace Inventory
   public class Item
   {
     private int _id;
-    private int _category;
+    private string _category;
     private string _name;
     private string _description;
     private string _amount;
     private int _price;
 
-    public Item(int category, string name, string description, string amount, int price, int Id = 0)
+    public Item(string category, string name, string description, string amount, int price, int Id = 0)
     {
       _id = Id;
       _category = category;
@@ -23,11 +23,11 @@ namespace Inventory
       _price = price;
 
     }
-    public int GetCategory()
+    public string GetCategory()
     {
       return _category;
     }
-    public void SetCategory(int newCategory)
+    public void SetCategory(string newCategory)
     {
       _category = newCategory;
     }
@@ -82,7 +82,7 @@ namespace Inventory
       while(rdr.Read())
       {
         int itemId = rdr.GetInt32(0);
-        int itemCategory = rdr.GetInt32(1);
+        string itemCategory = rdr.GetString(1);
         string itemName = rdr.GetString(2);
         string itemDescription = rdr.GetString(3);
         string itemAmount = rdr.GetString(4);
@@ -168,6 +168,17 @@ namespace Inventory
         conn.Close();
       }
     }
+    public static void DeleteItem(int id)
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+      SqlCommand cmd = new SqlCommand("DELETE FROM items WHERE id = " + id + ";", conn);
+      cmd.ExecuteNonQuery();
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
 
     public static void DeleteAll()
     {
@@ -175,6 +186,10 @@ namespace Inventory
       conn.Open();
       SqlCommand cmd = new SqlCommand("DELETE FROM items;", conn);
       cmd.ExecuteNonQuery();
+      if (conn != null)
+      {
+        conn.Close();
+      }
     }
 
     public static Item Find(int id)
@@ -191,7 +206,7 @@ namespace Inventory
       rdr = cmd.ExecuteReader();
 
       int foundItemId = 0;
-      int foundItemCategory = 0;
+      string foundItemCategory = null;
       string foundItemName = null;
       string foundItemDescription = null;
       string foundItemAmount = null;
@@ -199,7 +214,7 @@ namespace Inventory
       while(rdr.Read())
       {
         foundItemId = rdr.GetInt32(0);
-        foundItemCategory = rdr.GetInt32(1);
+        foundItemCategory = rdr.GetString(1);
         foundItemName = rdr.GetString(2);
         foundItemDescription = rdr.GetString(3);
         foundItemAmount = rdr.GetString(4);

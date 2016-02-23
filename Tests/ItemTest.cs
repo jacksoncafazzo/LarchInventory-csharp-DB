@@ -26,8 +26,8 @@ namespace Inventory
     public void Test_Equal_ReturnsTrueIfDescriptionsAreTheSame()
     {
       //Arrange, Act
-      Item firstItem = new Item(1, "Gouda", "George's Best Gouda from FM", "one pound", 6);
-      Item secondItem = new Item(1, "Gouda", "George's Best Gouda from FM", "one pound", 6);
+      Item firstItem = new Item("solid", "Gouda", "George's Best Gouda from FM", "one pound", 6);
+      Item secondItem = new Item("solid", "Gouda", "George's Best Gouda from FM", "one pound", 6);
 
       //Assert
       Assert.Equal(firstItem, secondItem);
@@ -37,7 +37,7 @@ namespace Inventory
     public void Test_Save_SavesToDatabase()
     {
       //Arrange
-      Item testItem = new Item(2, "Heavy Cream", "organic", "one half-gallon", 8);
+      Item testItem = new Item("liquid", "Heavy Cream", "organic", "one half-gallon", 8);
 
       //Act
       testItem.Save();
@@ -52,7 +52,7 @@ namespace Inventory
     public void Test_Save_AssignsIdToObject()
     {
       //Arrange
-      Item testItem = new Item(3, "Baking Soda", "Arm and Hammer", "one box", 5);
+      Item testItem = new Item("seasoning", "Baking Soda", "Arm and Hammer", "one box", 5);
 
       //Act
       testItem.Save();
@@ -69,7 +69,7 @@ namespace Inventory
     public void Test_Find_FindsItemInDatabase()
     {
       //Arrange
-      Item testItem = new Item(3, "Saffron", "best kind", "one gram", 20);
+      Item testItem = new Item("seasoning", "Saffron", "best kind", "one gram", 20);
       testItem.Save();
 
       //Act

@@ -22,9 +22,15 @@ namespace Inventory
         allItems = Item.GetAll();
         return View["item_list.cshtml", allItems];
       };
-      Get["/clear_all"] = _ => {
+      Get["/delete_all"] = _ => {
         Item.DeleteAll();
-        return View["cleared.cshtml"];
+        return View["deleted.cshtml"];
+      };
+      Post["/delete_item/{id}"] = parameters => {
+        Item.DeleteItem(parameters.id);
+        List<Item> allItems = new List<Item>(){};
+        allItems = Item.GetAll();
+        return View["item_list.cshtml", allItems];
       };
 
     }

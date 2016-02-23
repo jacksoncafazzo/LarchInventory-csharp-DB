@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form action="/add_item" method="post">
+        <label for="category">Choose an item category: </label>
+        <input type="text-inline" name="category" value="" size="30" placeholder="solid, liquid, dry or seasoning">
+        <br>
+        <label for="name">What will we call this item?</label>
+        <input type="text-inline" name="name" value="" placeholder="Farmer's Cheese, or Strawberries, etc." size="30">
+        <br>
+        <textarea rows="4" cols="50" name="description" placeholder="Here you can enter info about specific brands, favorite stores, notes about where foraged from, etc" value=""></textarea>
+        <br>
+        <label for="amount">Write the amount you are considering to calculate the price</label>
+        <input type="text-inline" name="amount" value="" placeholder="one pound, one gallon, one gram etc." size="30">
+        <br>
+        <label for="price">Enter the price for this item</label>
+        <input type="number-inline" name="price" value=0>
+        <br>
+        <button type="submit" name="add-item">Add Item</button>
+      </form>
+    </div>
+  </div>
+</div>

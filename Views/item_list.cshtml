@@ -1,11 +1,17 @@
+
 here it is dawg:
 @foreach (var item in @Model)
 {
-  <li>Name: @item.GetName()</li>
-  <li>Category: @item.GetCategory()</li>
-  <li>Description: @item.GetDescription()</li>
-  <li>Amount per item: @item.GetAmount()</li>
-  <li>Price per item: $@item.GetPrice()</li>
+  <ul>
+    <li><a href="item/@item.GetId()">@item.GetName()</a></li>
+    <li>Category: @item.GetCategory()</li>
+    <li>Description: @item.GetDescription()</li>
+    <li>Amount per item: @item.GetAmount()</li>
+    <li>Price per item: $@item.GetPrice()</li>
+    <li><a href="/delete_item/@item.GetId()">Delete @item.GetName()</a></li>
+  </ul>
 }
-
-<a href="/clear_all">Clear All Items</a>
+<h2>Add a new item here:</h2>
+@Html.Partial("add_item_form.cshtml")
+<h3> !!! Warning ! This deletes ALL items !!!
+<a href="/delete_all">Delete All Items</a>
