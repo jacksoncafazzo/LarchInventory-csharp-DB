@@ -41,6 +41,6 @@ namespace Inventory
   }
     public static class DBConfiguration
     {
-        public static string ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=larchInventory;Integrated Security=SSPI;";
+        public static string ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=inventory;Integrated Security=SSPI;";
     }
 }

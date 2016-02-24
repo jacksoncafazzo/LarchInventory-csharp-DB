@@ -1,0 +1,7 @@
+ingredient table has tomatoes, noodles and strawberries.
+we need to find noodles and tomatoes and display those in the spaghetti category.
+user creates a new menu item, enters name, and is shown a list of inventory.
+  user selects items from inventory to add to the menu item.
+  form submit saves inventory items to menu item column under ingredients.
+  review page shows the menu item with items currently in it
+show option to make another menu item

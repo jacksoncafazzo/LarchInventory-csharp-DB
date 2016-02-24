@@ -8,7 +8,9 @@ here it is dawg:
     <li>Description: @item.GetDescription()</li>
     <li>Amount per item: @item.GetAmount()</li>
     <li>Price per item: $@item.GetPrice()</li>
-    <li><a href="/delete_item/@item.GetId()">Delete @item.GetName()</a></li>
+    <form method="post" action="/delete_item/@item.GetId()">
+    <li><button type="submit">Delete @item.GetName()</button></li>
+    </form>
   </ul>
 }
 <h2>Add a new item here:</h2>

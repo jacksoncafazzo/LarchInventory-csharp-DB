@@ -76,7 +76,7 @@ namespace Inventory
       SqlDataReader rdr = null;
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("SELECT * FROM items;", conn);
+      SqlCommand cmd = new SqlCommand("SELECT * FROM ingredients;", conn);
       rdr = cmd.ExecuteReader();
 
       while(rdr.Read())
@@ -103,30 +103,13 @@ namespace Inventory
       return allItems;
     }
 
-    public override bool Equals(System.Object otherItem)
-    {
-      if (!(otherItem is Item))
-      {
-        return false;
-      }
-      else
-      {
-        Item newItem = (Item) otherItem;
-        bool idEquality = (this.GetId() == newItem.GetId());
-        bool descriptionEquality = (this.GetDescription() == newItem.GetDescription());
-        return (idEquality && descriptionEquality);
-
-      }
-    }
-
-
     public void Save()
     {
       SqlConnection conn = DB.Connection();
       SqlDataReader rdr;
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("INSERT INTO items (category, name, description, amount, price) OUTPUT INSERTED.id VALUES (@ItemCategory, @ItemName, @ItemDescription, @ItemAmount, @ItemPrice)", conn);
+      SqlCommand cmd = new SqlCommand("INSERT INTO ingredients (category, name, description, amount, price) OUTPUT INSERTED.id VALUES (@ItemCategory, @ItemName, @ItemDescription, @ItemAmount, @ItemPrice)", conn);
 
       SqlParameter categoryParameter = new SqlParameter();
       categoryParameter.ParameterName = "@ItemCategory";
@@ -172,7 +155,7 @@ namespace Inventory
     {
       SqlConnection conn = DB.Connection();
       conn.Open();
-      SqlCommand cmd = new SqlCommand("DELETE FROM items WHERE id = " + id + ";", conn);
+      SqlCommand cmd = new SqlCommand("DELETE FROM ingredients WHERE id = " + id + ";", conn);
       cmd.ExecuteNonQuery();
       if (conn != null)
       {
@@ -184,7 +167,7 @@ namespace Inventory
     {
       SqlConnection conn = DB.Connection();
       conn.Open();
-      SqlCommand cmd = new SqlCommand("DELETE FROM items;", conn);
+      SqlCommand cmd = new SqlCommand("DELETE FROM ingredients;", conn);
       cmd.ExecuteNonQuery();
       if (conn != null)
       {
@@ -198,7 +181,7 @@ namespace Inventory
       SqlDataReader rdr = null;
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("SELECT * FROM items WHERE id = @ItemId;", conn);
+      SqlCommand cmd = new SqlCommand("SELECT * FROM ingredients WHERE id = @ItemId;", conn);
       SqlParameter itemIdParameter = new SqlParameter();
       itemIdParameter.ParameterName = "@ItemId";
       itemIdParameter.Value = id.ToString();
